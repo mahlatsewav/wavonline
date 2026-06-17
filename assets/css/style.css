@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap');
+
+/* font placeholder*/
+@font-face {
+    font-family: 'cgr';
+    src: local('Cabinet Grotesk'), local('Helvetica Neue'), sans-serif;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'am';
+    src: local('Akkurat Mono'), local('Courier New'), monospace;
+    font-display: swap;
+}
+
+/*fonts */
+@font-face { font-family: 'db'; src: local('Druk Bold'), local('Impact'), sans-serif; font-weight: bold; font-display: swap; }
+@font-face { font-family: 'dh'; src: local('Druk Heavy'), local('Impact'), sans-serif; font-weight: 800; font-display: swap; }
+@font-face { font-family: 'dm'; src: local('Druk Medium'), local('Impact'), sans-serif; font-weight: 500; font-display: swap; }
+@font-face { font-family: 'ds'; src: local('Druk Super'), local('Impact'), sans-serif; font-weight: 900; font-display: swap; }
+
+:root {
+    --c1: #121212;
+    --c2: #e0e0e4;
+    --c3: #2b2b2b;
+    --base-100: #ffffff;
+    --base-200: #999999;
+    --base-300: #343434;
+    --base-400: #212121;
+    --base-500: #000000;
+    
+    --bg-color: oklch(0.145 0 0);
+    --fg-color: oklch(0.985 0 0);
+    --primary-color: oklch(0.922 0 0);
+    --muted-color: oklch(0.269 0 0);
+    --border-color: oklch(1 0 0 / 10%);
+
+    --radius: 0.625rem;
+
+    --font-geist-sans: 'Geist', sans-serif;
+    --font-geist-mono: 'Geist Mono', monospace;
+}
+
+body {
+    background-color: #030303;
+    color: var(--fg-color);
+    font-family: var(--font-geist-sans);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+button, 
+input[type="submit"], 
+input[type="reset"] {
+    cursor: pointer;
+}
+
+.font-cgr { font-family: 'cgr', var(--font-geist-sans); }
+.font-am { font-family: 'am', var(--font-geist-mono); }
+.font-db { font-family: 'db', var(--font-geist-sans); }
+.font-dh { font-family: 'dh', var(--font-geist-sans); }
+.font-dm { font-family: 'dm', var(--font-geist-sans); }
+.font-ds { font-family: 'ds', var(--font-geist-sans); }
+
+/* Layout & Elements */
+.main-content {
+    flex: 1;
+}
+
+.page-lock {
+    overflow: hidden;
+    position: relative;
+}
+
+.listing-card {
+    background-color: var(--c3);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    transition: transform 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+}
+
+.listing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    border-color: var(--c2);
+}
+
+.glass-panel {
+    background-color: var(--c1);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+}
+
+.noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
